@@ -1,0 +1,818 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "pp_web",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "用户认证"
+    },
+    {
+      "name": "前端mock用"
+    },
+    {
+      "name": "图像处理"
+    },
+    {
+      "name": "查看历史记录"
+    }
+  ],
+  "paths": {
+    "/scupp/user/vtf/": {
+      "post": {
+        "summary": "注册时邮件验证码发送接口",
+        "x-apifox-folder": "用户认证",
+        "x-apifox-status": "testing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "用户认证"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "",
+                "type": "object",
+                "properties": {
+                  "email_address": {
+                    "type": "string",
+                    "description": "接收邮件的邮箱地址"
+                  }
+                },
+                "x-apifox-orders": [
+                  "email_address"
+                ],
+                "required": [
+                  "email_address"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "msg"
+                  ],
+                  "required": [
+                    "msg"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {}
+              }
+            }
+          },
+          "403": {
+            "description": "用户已经注册过了",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string",
+                      "description": "描述信息"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "msg"
+                  ],
+                  "required": [
+                    "msg"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/picture": {
+      "post": {
+        "summary": "图片接收",
+        "x-apifox-folder": "前端mock用",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "前端mock用"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fileList",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "x-apifox-ignore-properties": [],
+                "x-apifox-orders": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scupp/image/": {
+      "post": {
+        "summary": "目标检测",
+        "x-apifox-folder": "图像处理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "在进行目标检测时，除了action，还需附带一个参数：category，参数的取值为 playground，aircraft，oiltank，overpass中的一个。",
+        "tags": [
+          "图像处理"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "",
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "action",
+                  "category"
+                ],
+                "required": [
+                  "action",
+                  "category"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scupp/image/save/": {
+      "post": {
+        "summary": "download",
+        "x-apifox-folder": "",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "",
+                "type": "object",
+                "properties": {
+                  "image_path": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "每个元素是一个path"
+                  }
+                },
+                "x-apifox-orders": [
+                  "image_path"
+                ],
+                "required": [
+                  "image_path"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": {
+                "image_path": [
+                  "http://dummyimage.com/400x400",
+                  "http://dummyimage.com/400x400",
+                  "http://dummyimage.com/400x400",
+                  "http://dummyimage.com/400x400",
+                  "http://dummyimage.com/400x400"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "base64_list": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "用户请求的图片的base64编码"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "base64_list"
+                  ],
+                  "required": [
+                    "base64_list"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {}
+              }
+            }
+          },
+          "404": {
+            "description": "图片不存在",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scupp/user/password/": {
+      "post": {
+        "summary": "重置密码时发送验证码",
+        "x-apifox-folder": "用户认证",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "请求体中附带  action = ’send_vtf', 并附带 email_address字段",
+        "tags": [
+          "用户认证"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "",
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "description": "必须为send_vtf"
+                  },
+                  "email_address": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "action",
+                  "email_address"
+                ],
+                "required": [
+                  "action",
+                  "email_address"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "msg"
+                  ],
+                  "required": [
+                    "msg"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {}
+              }
+            }
+          },
+          "401": {
+            "description": "账号未注册",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "msg"
+                  ],
+                  "required": [
+                    "msg"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scupp/user/": {
+      "post": {
+        "summary": "登录接口",
+        "x-apifox-folder": "用户认证",
+        "x-apifox-status": "testing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "用户认证"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "",
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "description": "表示行为是注册还是登录"
+                  },
+                  "email_address": {
+                    "type": "string",
+                    "description": "用户接受验证码的邮箱\n"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "登录密码"
+                  }
+                },
+                "x-apifox-orders": [
+                  "action",
+                  "email_address",
+                  "password"
+                ],
+                "required": [
+                  "action",
+                  "email_address",
+                  "password"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string",
+                      "description": "提示信息"
+                    },
+                    "user": {
+                      "description": "序列化后的user对象",
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "msg",
+                    "user"
+                  ],
+                  "required": [
+                    "msg",
+                    "user"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {}
+              }
+            }
+          },
+          "401": {
+            "description": "用户不存在",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string",
+                      "description": "提示信息"
+                    },
+                    "user": {
+                      "type": "string",
+                      "description": "请求完成情况"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "msg",
+                    "user"
+                  ],
+                  "required": [
+                    "msg",
+                    "user"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {}
+              }
+            }
+          },
+          "x-401:密码错误": {
+            "description": "密码错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string",
+                      "description": "描述信息\n"
+                    },
+                    "user": {
+                      "description": "请求完成状态",
+                      "type": "string"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "msg",
+                    "user"
+                  ],
+                  "required": [
+                    "msg",
+                    "user"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "注销登录",
+        "x-apifox-folder": "",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "",
+                "type": "object",
+                "properties": {
+                  "email_address": {
+                    "type": "string",
+                    "description": "当前登录的用户名"
+                  }
+                },
+                "x-apifox-orders": [
+                  "email_address"
+                ],
+                "required": [
+                  "email_address"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "注销成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                },
+                "examples": {}
+              }
+            }
+          },
+          "400": {
+            "description": "注销失败",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scupp/user/history/times/": {
+      "post": {
+        "summary": "剩余次数",
+        "x-apifox-folder": "",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "查询当前用户邮箱的剩余上传次数",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "",
+                "type": "object",
+                "properties": {
+                  "email_address": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "email_address"
+                ],
+                "required": [
+                  "email_address"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                },
+                "examples": {}
+              }
+            }
+          },
+          "404": {
+            "description": "查询失败",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scupp/user/history/": {
+      "post": {
+        "summary": "历史记录",
+        "x-apifox-folder": "查看历史记录",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "查看用户的历史记录，请求参数是email_address， 返回结果是一个json数组，每个json数据包含四个字段：email_address, upload_images, result_images, upload_time ， 其中upload_images和result_images都是保存在服务器的图片路径列表。",
+        "tags": [
+          "查看历史记录"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "",
+                "type": "object",
+                "properties": {
+                  "email_address": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "email_address"
+                ],
+                "required": [
+                  "email_address"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": [],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/scupp/user/history/usage/": {
+      "post": {
+        "summary": "四个功能的使用次数和总剩余次数 Copy",
+        "x-apifox-folder": "",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "请求参数：email_address,  返回结果：                {\n                    \"change_detection\": cd_use_time,\n                    \"target_detection\": td_use_time,\n                    \"terrain_classification\": tc_use_time,\n                    \"target_extration\": te_use_time,\n                    \"remain_times\":remain_times\n                },",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "",
+                "type": "object",
+                "properties": {
+                  "email_address": {
+                    "type": "string",
+                    "description": "当前用户的邮箱"
+                  }
+                },
+                "x-apifox-orders": [
+                  "email_address"
+                ],
+                "required": [
+                  "email_address"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "change_detection": {
+                      "type": "integer"
+                    },
+                    "target_detection": {
+                      "type": "integer"
+                    },
+                    "terrain_classification": {
+                      "type": "integer"
+                    },
+                    "target_extraction": {
+                      "type": "integer"
+                    },
+                    "remain_times": {
+                      "type": "integer"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "change_detection",
+                    "target_detection",
+                    "terrain_classification",
+                    "target_extraction",
+                    "remain_times"
+                  ],
+                  "required": [
+                    "change_detection",
+                    "target_detection",
+                    "terrain_classification",
+                    "target_extraction",
+                    "remain_times"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {}
+              }
+            }
+          },
+          "404": {
+            "description": "记录不存在",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}
